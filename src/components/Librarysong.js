@@ -1,6 +1,7 @@
 import { faCommentsDollar } from '@fortawesome/free-solid-svg-icons';
 import React from 'react'
 
+
 const Librarysong = ({song, songs, setCurrentSong,id, audioRef,isPlaying,setSongs}) => {
 
     const songSelectHandler = async ()=>{
@@ -26,17 +27,9 @@ const Librarysong = ({song, songs, setCurrentSong,id, audioRef,isPlaying,setSong
           setSongs(newSongs);
 
         //check if the song is playing
-        if(isPlaying){
-            const playPromise =audioRef.current.play();
-            if(playPromise !==undefined){
-                playPromise.then((audio) =>{
-                    audioRef.current.play();
-                })
-            }
-        }
 
-
-
+        if(isPlaying) audioRef.current.play();
+        
     }
     return (
         <div  onClick={songSelectHandler} className={`library-song ${song.active ? 'selected' : ""}`}>
